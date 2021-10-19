@@ -1,30 +1,51 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app" class="app">
+
+    <div class="header">
+      <h1>Tienda de repuestos</h1>
+    </div>
+
   </div>
-  <router-view/>
 </template>
 
+<script>
+export default {
+  name: 'App',
+
+  data: function(){
+  },
+
+  methods:{
+  },
+
+  created: function(){
+  }
+
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  body{
+    margin: 0 0 0 0;
+  }
 
-#nav {
-  padding: 30px;
-}
+  .header{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 10vh; 
+    min-height: 100px;
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+    background-color: #283747 ;
+    color:#E5E7E9  ;
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header h1{
+    width: 20%;
+    text-align: center;
+  }
 </style>
