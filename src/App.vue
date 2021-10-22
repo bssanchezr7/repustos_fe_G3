@@ -3,9 +3,9 @@
   <div class="header">
   <h1>Tienda de repuestos</h1>
     <nav>
-      <button v-if="is_auth" > Inicio </button>
-      <button v-if="is_auth" > Cuenta </button>
-      <button v-if="is_auth" > Cerrar Sesión </button>
+      <button v-if="is_auth" v-on:click="loadHome" > Inicio </button>
+      <button v-if="is_auth" v-on:click="loadProductos"> Productos </button>
+      <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
     </nav>
@@ -15,6 +15,7 @@
     <router-view
       v-on:completedLogIn="completedLogIn"
       v-on:completedSignUp="completedSignUp"
+      v-on:logOut="logOut"
     >
     </router-view>
   </div>
@@ -40,9 +41,13 @@ export default {
 
   methods:{
     verifyAuth: function() {
-      if(this.is_auth == false)
-        this.$router.push({name: "logIn"})
-  },
+      this.is_auth = localStorage.getItem("isAuth") || false;
+		
+			if (this.is_auth == false)
+        this.$router.push({ name: "logIn" });
+      else
+        this.$router.push({ name: "home" });
+    },
 
   loadLogIn: function(){
     this.$router.push({name: "logIn"})
@@ -52,10 +57,33 @@ export default {
     this.$router.push({name: "signUp"})
   },
 
-  completedLogIn: function(data) {},
+  completedLogIn: function(data) {
+      localStorage.setItem("isAuth", true);
+			localStorage.setItem("username", data.username);
+			localStorage.setItem("token_access", data.token_access);
+			localStorage.setItem("token_refresh", data.token_refresh);
+			alert("Autenticación Exitosa");
+			this.verifyAuth();
+  },
 
-  completedSignUp: function(data) {},
+  completedSignUp: function(data) {
+      alert("Registro Exitoso");
+			this.completedLogIn(data);
+  },
 
+  loadHome: function() {
+      this.$router.push({ name: "home" });
+  },
+
+  loadProductos: function () {
+			this.$router.push({ name: "productos" });
+		},
+
+  logOut: function () {
+			localStorage.clear();
+			alert("Sesión Cerrada");
+			this.verifyAuth();
+		},
 },
 
   created: function(){
