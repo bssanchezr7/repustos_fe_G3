@@ -64,6 +64,7 @@ export default {
             this.producto,
             {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
+                    
                     alert("Item Actualizado"); 
                     this.producto.id = "";
                     this.producto.nombre= "";
@@ -72,12 +73,16 @@ export default {
                     console.log(this.product);                           
                     })
                 .catch((error) => {
+                    
                     console.log("Error");
                     if(error.response.status == "401") {
                         alert("Usted no está autorizado para realizar esta operación.");
+                       
+
                     }
-                    else if(error.response.status == "400"){
-                        alert("Revise todos los datos e intente de nuevo.");
+                    else if(error.response.status == "404"){
+                        alert("Usted no tiene este item.");
+                        
                     }
                 });
         },

@@ -9,7 +9,7 @@
                 <button type="submit"> Buscar Producto </button>
         </form>
         
-        <table class="table" border="4">
+        <table v-show="datos.length>0" class="table" border="4">
             <thead>
                 <tr>
                     <th width=30px>ID</th>
@@ -44,6 +44,7 @@ export default {
                 precio: 0,
             },
             buscar: "",
+            datos: [],
         }
     },
 

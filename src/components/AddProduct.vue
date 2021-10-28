@@ -69,6 +69,7 @@ export default {
                     console.log(this.product);               
                     })
                 .catch((error) => {
+                    alert(result.data); 
                     console.log("Error");
                     if(error.response.status == "401") {
                         alert("Usted no está autorizado para realizar esta operación.");

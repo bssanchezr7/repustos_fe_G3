@@ -12,7 +12,7 @@
             <input type="submit" value="actualizar"> 
             </form>-->
 
-        <table class="table" border="4">
+        <table v-show="datos.length>0" class="table" border="4">
             <thead>
                 <tr>
                     <th width=30px>ID</th>
@@ -49,7 +49,8 @@ export default {
                 precio: "",
                 user: 0,
             },
-            loaded: false,        
+            loaded: false, 
+            datos: [],       
         }
     },
     methods: {
