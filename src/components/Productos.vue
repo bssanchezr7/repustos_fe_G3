@@ -1,48 +1,17 @@
 <template>
 
     <div v-if="loaded" class="information">
-        <h1>Tus productos</h1>
-        <form class= "form " action="" method="post" target="_blank">
+        <h1>Tus productos</h1>   
+            <!--<form class= "form " action="" method="post" target="_blank">
 
             Búscar producto: <input class="busqueda" type="search" name="busquedaproducto" placeholder="Search...">
 
             <input type="submit" value="Buscar">
-            <!-- <input type="submit" value="agregar">
+             <input type="submit" value="agregar">
             <input type="submit" value="eliminar">
-            <input type="submit" value="actualizar"> -->
-            
-            
-            
+            <input type="submit" value="actualizar"> 
+            </form>-->
 
-        </form>
-        <button v-on:click="isVisible = !isVisible">Agregar</button>
-        <br>
-        
-        <div v-show="isVisible">
-            <form v-on:submit.prevent="createProduct">
-                <!-- <input type="number" v-model="id" placeholder="id"> -->
-                <input type="text" v-model="producto.nombre" placeholder="Descripción">
-                <input type="number" v-model="producto.precio" placeholder="Precio">
-
-                <button type="submit">Confirmar</button>
-            </form>
-        </div>
-        <div >
-            <form v-on:submit.prevent="updateProduct">
-                <input type="number" v-model="producto.id" placeholder="id">
-                <input type="text" v-model="producto.nombre" placeholder="Descripción">
-                <input type="number" v-model="producto.precio" placeholder="Precio">
-
-                <button type="submit">Confirmar</button>
-            </form>
-        </div>
-        <div >
-            <form v-on:submit.prevent="deleteProduct">
-                <input type="number" v-model="producto.id" placeholder="id">
-
-                <button type="submit">Confirmar</button>
-            </form>
-        </div>
         <table class="table" border="4">
             <thead>
                 <tr>
@@ -74,23 +43,15 @@ export default {
     
     data: function(){
         return {
-            
-            
             producto:{
                 id: 0,
                 nombre: "",
-                precio: 0,
-                user:0,
+                precio: "",
+                user: 0,
             },
-            loaded: false,
-            isVisible: false
+            loaded: false,        
         }
     },
-
-    components: {
-        
-    },
-
     methods: {
         getData: async function () {
 
@@ -130,7 +91,7 @@ export default {
           }
         },
 
-        createProduct: async function () {
+        getProduct: async function () {
             if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
                 this.$emit('logOut');
                 return;
@@ -143,89 +104,15 @@ export default {
             
             this.producto.user = userId;
 
-            axios.post(`https://mision-tic-bank-be00.herokuapp.com/producto/`,this.producto, 
-                                                                            {headers: {'Authorization': `Bearer ${token}`}})
+            axios.get(`https://mision-tic-bank-be00.herokuapp.com/producto/delete/${userId}/${this.producto.id}/`, 
+            {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
-                    alert(result.data); 
-                    this.producto.nombre= "";
-                    this.producto.precio = 0;
-                    this.producto.user= 0;  
-                    console.log(this.producto);               
-                    
-                    })
-                .catch((error) => {
-                    console.log("Error");
-                    
-                    if(error.response.status == "401") {
-                        alert("Usted no está autorizado para realizar esta operación.");
-                    }
-                    else if(error.response.status == "400"){
-                        alert("Revise todos los datos e intente de nuevo.");
-                    }
-                });
-        },
-
-        updateProduct: async function () {
-            if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
-                this.$emit('logOut');
-                return;
-			}
-
-            await this.verifyToken();
-            
-            let token = localStorage.getItem("token_access");
-            let userId = jwt_decode(token).user_id;
-            
-            this.producto.user = userId;
-
-            axios.put(`https://mision-tic-bank-be00.herokuapp.com/producto/update/${userId}/${this.producto.id}/`,this.producto, 
-                                                                            {headers: {'Authorization': `Bearer ${token}`}})
-                .then((result) => {
-                    alert("Item actualizado"); 
+                    alert("Item Encontrado"); 
                     this.producto.id = 0;
-                    this.producto.nombre= "";
-                    this.producto.precio = 0;
-                    this.producto.user= 0;  
                     console.log(this.producto);               
-                    
                     })
                 .catch((error) => {
                     console.log("Error");
-                    
-                    if(error.response.status == "401") {
-                        alert("Usted no está autorizado para realizar esta operación.");
-                    }
-                    else if(error.response.status == "400"){
-                        alert("Revise todos los datos e intente de nuevo.");
-                    }
-                });
-        },
-
-        deleteProduct: async function () {
-            if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
-                this.$emit('logOut');
-                return;
-			}
-
-            await this.verifyToken();
-            
-            let token = localStorage.getItem("token_access");
-            let userId = jwt_decode(token).user_id;
-            
-            this.producto.user = userId;
-
-            axios.delete(`https://mision-tic-bank-be00.herokuapp.com/producto/delete/${userId}/${this.producto.id}/`, 
-                                                                            {headers: {'Authorization': `Bearer ${token}`}})
-                .then((result) => {
-                    alert("Item eliminado"); 
-                    this.producto.id = 0;
-                     
-                    console.log(this.producto);               
-                    
-                    })
-                .catch((error) => {
-                    console.log("Error");
-                    
                     if(error.response.status == "401") {
                         alert("Usted no está autorizado para realizar esta operación.");
                     }
@@ -236,16 +123,14 @@ export default {
         },
 
     },
-
     created: async function(){
         this.getData();
     },
 }
 </script>
 
-
 <style>
-    .form p input{
+    .form input{
         width: 12%;
         color: #283747;
         background: #E5E7E9;
@@ -254,12 +139,6 @@ export default {
         padding: 10px 20px;
         font-size: 15px;
         margin: 0 auto;
-    }
-
-    .form p input:hover{
-        font-size: 20px;
-        color: #212427;
-
     }
 
     .form {
@@ -281,15 +160,11 @@ export default {
         width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
-  
         overflow:scroll;
         height:100%;
-        width:100%;
-
-        
+        width:100%; 
         justify-content: center;
         align-items: center;
-       
     }
 
     .information h1{
@@ -303,17 +178,12 @@ export default {
         table-layout: fixed;
         border-collapse: collapse;
         align-items: center;
-        margin: 0 auto;
-
-            
+        margin: 0 auto;   
     }
 
     .table th {
-        
-       
         padding: 5px;
         text-align: center;
-        
     }
 
     .table td{
@@ -322,24 +192,23 @@ export default {
     }
 
     .table thead{
-       
-        
         justify-content: center;
         align-items: center;
-
         font-size: 30px;
         color: #283747;
-      
     }
     .table tbody{
         font-size: 20px;
         color: #212427;
-
-        
         justify-content: center;
         align-items: center;
-        
     }
 
-
+    .information button{
+    color: #E5E7E9;
+    background: #283747;
+    border: 1px solid #E5E7E9;
+    border-radius: 5px;
+    padding: 10px 20px;
+  }
 </style>

@@ -5,6 +5,9 @@
     <nav>
       <button v-if="is_auth" v-on:click="loadHome" > Inicio </button>
       <button v-if="is_auth" v-on:click="loadProductos"> Productos </button>
+      <button v-if="is_auth" v-on:click="loadAddProduct"> Agregar </button>
+      <button v-if="is_auth" v-on:click="loadUpdateProduct"> Actualizar </button>
+      <button v-if="is_auth" v-on:click="loadDeleteProduct"> Eliminar </button>
       <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
@@ -50,11 +53,11 @@ export default {
     },
 
   loadLogIn: function(){
-    this.$router.push({name: "logIn"})
+      this.$router.push({name: "logIn"})
   },
 
   loadSignUp: function(){
-    this.$router.push({name: "signUp"})
+      this.$router.push({name: "signUp"})
   },
 
   completedLogIn: function(data) {
@@ -84,6 +87,16 @@ export default {
 			alert("Sesión Cerrada");
 			this.verifyAuth();
 		},
+  loadAddProduct: function() {
+      this.$router.push({ name: "addProduct" });
+  },
+
+  loadUpdateProduct: function() {
+      this.$router.push({ name: "updateProduct" });
+  },
+  loadDeleteProduct: function() {
+      this.$router.push({ name: "deleteProduct" });
+  },
 },
 
   created: function(){
@@ -104,10 +117,8 @@ export default {
     width: 100%;
     height: 10vh; 
     min-height: 100px;
-
     background-color: #283747 ;
     color:#E5E7E9  ;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,12 +131,10 @@ export default {
 
   .header nav {
     height: 100%;
-    width: 20%;
-
+    width: 40%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     font-size: 20px;
   }
 
@@ -133,7 +142,6 @@ export default {
     color: #E5E7E9;
     background: #283747;
     border: 1px solid #E5E7E9;
-
     border-radius: 5px;
     padding: 10px 20px;
   }
@@ -144,32 +152,26 @@ export default {
     border: 1px solid #E5E7E9;
   }
 
-  
   .main-component{
     height: 75vh;
     margin: 0%;
     padding: 0%;
-
     background: #FDFEFE ;
   }
 
- 
   .footer{
     margin: 0;
     padding: 0;
     width: 100%;
     height: 10vh;
     min-height: 100px; 
-
     background-color: #283747;
     color: #E5E7E9;
-
   }
 
   .footer h2{
     width: 100%;
     height: 100%;
-    
     display: flex;
     justify-content: center;
     align-items: center;

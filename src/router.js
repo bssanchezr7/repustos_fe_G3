@@ -5,6 +5,9 @@ import LogIn from './components/LogIn.vue'
 import SignUp from './components/SignUp.vue'
 import Home from './components/Home.vue'
 import Productos from './components/Productos.vue'
+import AddProduct from './components/AddProduct.vue'
+import UpdateProduct from './components/UpdateProduct.vue'
+import DeleteProduct from './components/DeleteProduct.vue'
 
 const routes = [{
     path: '/',
@@ -30,6 +33,21 @@ const routes = [{
         path: '/productos',
         name: "productos",
         component: Productos
+    },
+    {
+        path: '/producto',
+        name: "addProduct",
+        component: AddProduct
+    },
+    {
+        path: '/producto/update',
+        name: "updateProduct",
+        component: UpdateProduct
+    },
+    {
+        path: '/producto/delete',
+        name: "deleteProduct",
+        component: DeleteProduct
     },
 ];
 
