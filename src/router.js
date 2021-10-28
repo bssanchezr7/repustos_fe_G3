@@ -8,6 +8,7 @@ import Productos from './components/Productos.vue'
 import AddProduct from './components/AddProduct.vue'
 import UpdateProduct from './components/UpdateProduct.vue'
 import DeleteProduct from './components/DeleteProduct.vue'
+import SearchProduct from './components/SearchProduct.vue'
 
 const routes = [{
     path: '/',
@@ -48,6 +49,11 @@ const routes = [{
         path: '/producto/delete',
         name: "deleteProduct",
         component: DeleteProduct
+    },
+    {
+        path: '/productos/buscar',
+        name: "searchProduct",
+        component: SearchProduct
     },
 ];
 

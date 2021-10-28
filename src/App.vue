@@ -8,6 +8,7 @@
       <button v-if="is_auth" v-on:click="loadAddProduct"> Agregar </button>
       <button v-if="is_auth" v-on:click="loadUpdateProduct"> Actualizar </button>
       <button v-if="is_auth" v-on:click="loadDeleteProduct"> Eliminar </button>
+      <button v-if="is_auth" v-on:click="loadSearchProduct"> Buscar </button>
       <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
       <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
@@ -96,6 +97,9 @@ export default {
   },
   loadDeleteProduct: function() {
       this.$router.push({ name: "deleteProduct" });
+  },
+  loadSearchProduct: function() {
+      this.$router.push({ name: "searchProduct" });
   },
 },
 
