@@ -60,7 +60,7 @@ export default {
                 .then((result) => {
                     alert("Item eliminado"); 
                     this.producto.id = "";     
-                    console.log(this.producto);               
+                                  
                     })
                 .catch((error) => {
                     console.log("Error");

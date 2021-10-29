@@ -84,37 +84,6 @@ export default {
           }
         },
 
-        getProduct: async function () {
-            if (localStorage.getItem("token_access") === null || localStorage.getItem("token_refresh") === null) {
-                this.$emit('logOut');
-                return;
-			}
-
-            await this.verifyToken();
-            
-            let token = localStorage.getItem("token_access");
-            let userId = jwt_decode(token).user_id;
-            
-            this.producto.user = userId;
-
-            axios.get(`https://mision-tic-bank-be00.herokuapp.com/producto/delete/${userId}/${this.producto.id}/`, 
-            {headers: {'Authorization': `Bearer ${token}`}})
-                .then((result) => {
-                    alert("Item Encontrado"); 
-                    this.producto.id = 0;
-                    console.log(this.producto);               
-                    })
-                .catch((error) => {
-                    console.log("Error");
-                    if(error.response.status == "401") {
-                        alert("Usted no está autorizado para realizar esta operación.");
-                    }
-                    else if(error.response.status == "400"){
-                        alert("Revise todos los datos e intente de nuevo.");
-                    }
-                });
-        },
-
     },
     created: async function(){
         this.getData();
@@ -158,8 +127,7 @@ export default {
     }
 
     .table thead{
-        /* justify-content: center;
-        align-items: center; */
+        
         font-size: 30px;
         color: #283747;
     }

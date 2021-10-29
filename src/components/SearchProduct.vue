@@ -79,7 +79,7 @@ export default {
                 .then((result) => {
                     this.datos = result.data 
                     this.buscar = "";
-                    console.log(this.datos);
+                    
                     })
                 .catch((error) => {
                     console.log("Error");

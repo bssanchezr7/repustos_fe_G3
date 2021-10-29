@@ -71,7 +71,7 @@ export default {
                     this.producto.nombre= "";
                     this.producto.precio = "";
                     this.producto.user= 0;  
-                    console.log(this.product);                           
+                                             
                     })
                 .catch((error) => {
                     
