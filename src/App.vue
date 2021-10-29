@@ -1,17 +1,20 @@
 <template>
   <div id="app" class="app">
   <div class="header">
-  <h1>Tienda de repuestos</h1>
-    <nav>
-      <button v-if="is_auth" v-on:click="loadHome" > Inicio </button>
-      <button v-if="is_auth" v-on:click="loadProductos"> Productos </button>
-      <button v-if="is_auth" v-on:click="loadAddProduct"> Agregar </button>
-      <button v-if="is_auth" v-on:click="loadUpdateProduct"> Actualizar </button>
-      <button v-if="is_auth" v-on:click="loadDeleteProduct"> Eliminar </button>
-      <button v-if="is_auth" v-on:click="loadSearchProduct"> Buscar </button>
-      <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
-      <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
-      <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
+    
+    <nav >
+      <h1>Tienda de repuestos</h1>
+      <ul style="list-style-type:none;">
+        <li><button v-if="is_auth" v-on:click="loadHome" > Inicio </button></li>
+        <li><button v-if="is_auth" v-on:click="loadProductos"> Productos </button></li>
+        <li><button v-if="is_auth" v-on:click="loadAddProduct"> Agregar </button></li>
+        <li><button v-if="is_auth" v-on:click="loadUpdateProduct"> Actualizar </button></li>
+        <li><button v-if="is_auth" v-on:click="loadDeleteProduct"> Eliminar </button></li>
+        <li><button v-if="is_auth" v-on:click="loadSearchProduct"> Buscar </button></li>
+        <li><button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button></li>
+        <li><button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button></li>
+        <li><button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button></li>
+    </ul>
     </nav>
   </div>
 
@@ -24,9 +27,9 @@
     </router-view>
   </div>
 
-  <div class="footer">
+  <!-- <div class="footer">
     <h2>Misión TIC 2022</h2>
-  </div>
+  </div> -->
 </div>
 </template>
 
@@ -111,12 +114,21 @@ export default {
 </script>
 
 <style>
+:root {
+	--background-color: #ffe5e5;
+	--color: #000000;
+	--feedback-bg-color: #ffffff;
+	--feedback-secondary-color: #ffacac;
+	--feedback-primary-color: #53488d;
+	--feedback-icon-color: #ffffff;
+	--feedback-form-input: #f4f4f4;
+}
  body{
     margin: 0 0 0 0;
   }
 
   .header{
-    margin: 0%;
+    /* margin: 0%;
     padding: 0;
     width: 100%;
     height: 10vh; 
@@ -125,45 +137,85 @@ export default {
     color:#E5E7E9  ;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
+    position: fixed;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    background-color: #F1F6F9;
+    overflow-y: auto;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    place-content: center;
   }
 
   .header h1{
-    width: 30%;
+    font-size: 40px;
+    height: 50%;
+    color: #0f1316;
     text-align: center;
   }
 
-  .header nav {
+  /* .header nav {
     height: 100%;
-    width: 40%;
+    width: 25%;
     display: flex;
-    justify-content: space-around;
+    justify-content: normal ;
     align-items: center;
     font-size: 20px;
+    
+  } */
+
+  .header nav ul li {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    
+    
+  }
+
+  .header nav{
+    place-content: center;
+    height: 90vh;
   }
 
   .header nav button{
     color: #E5E7E9;
-    background: #283747;
+    background: #14274E;
     border: 1px solid #E5E7E9;
-    border-radius: 5px;
-    padding: 10px 20px;
+    /* border-radius: 5px; */
+    padding: 10px 50%;
+    /* display: block */
+    justify-content: center;
+    
   }
 
   .header nav button:hover{
     color: #283747;
-    background: #E5E7E9;
+    background: #9BA4B4;
     border: 1px solid #E5E7E9;
   }
 
   .main-component{
-    height: 75vh;
-    margin: 0%;
-    padding: 0%;
+    /* height: 60%;
+    /* margin: 0%; */
+    /* padding: 0%;
     background: #FDFEFE ;
+    align-items: left;
+    justify-content: left;  */
+
+    overflow: visible ;
+    width: calc(75% + 1px);
   }
 
-  .footer{
+  /* .footer{
     margin: 0;
     padding: 0;
     width: 100%;
@@ -179,5 +231,5 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
 </style>

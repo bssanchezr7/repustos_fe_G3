@@ -2,15 +2,6 @@
 
     <div v-if="loaded" class="information">
         <h1>Tus productos</h1>   
-            <!--<form class= "form " action="" method="post" target="_blank">
-
-            Búscar producto: <input class="busqueda" type="search" name="busquedaproducto" placeholder="Search...">
-
-            <input type="submit" value="Buscar">
-             <input type="submit" value="agregar">
-            <input type="submit" value="eliminar">
-            <input type="submit" value="actualizar"> 
-            </form>-->
 
         <table v-show="datos.length>0" class="table" border="4">
             <thead>
@@ -131,60 +122,32 @@ export default {
 </script>
 
 <style>
-    .form input{
-        width: 12%;
-        color: #283747;
-        background: #E5E7E9;
-        border: 1px solid #283747;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 15px;
-        margin: 0 auto;
-    }
-
-    .form {
-        font-size: 20px;
-        color: #212427;
-        margin: 0 auto;
-        align-items: center;
-        text-align: center;
-
-    }
-
-    .busqueda input {
-        color: #283747;
-        background: #E5E7E9;
-        border: 1px solid #E5E7E9;
-    }
-
     .information{
         width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
-        overflow:scroll;
-        height:100%;
-        width:100%; 
-        justify-content: center;
-        align-items: center;
+        
+        justify-content: left;
+        align-items: left;
     }
 
     .information h1{
         font-size: 60px;
         color: #0f1316;
-        text-align: center;
+        text-align: left;
     }
     
     .table{
         width: 60%;
         table-layout: fixed;
         border-collapse: collapse;
-        align-items: center;
-        margin: 0 auto;   
+        align-items: left;
+        /* margin: 0 auto;    */
     }
 
     .table th {
         padding: 5px;
-        text-align: center;
+        text-align: left;
     }
 
     .table td{
@@ -193,16 +156,16 @@ export default {
     }
 
     .table thead{
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center;
+        align-items: center; */
         font-size: 30px;
         color: #283747;
     }
     .table tbody{
         font-size: 20px;
         color: #212427;
-        justify-content: center;
-        align-items: center;
+        justify-content: left;
+        align-items: left;
     }
 
     .information button{
