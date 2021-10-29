@@ -1,8 +1,9 @@
 <template>
 
     <div v-if="loaded" class="information">
+        <br>
         <h1>Tus productos</h1>   
-
+        <br>
         <table v-show="datos.length>0" class="table" border="4">
             <thead>
                 <tr>
@@ -129,6 +130,7 @@ export default {
         
         justify-content: left;
         align-items: left;
+        scrollbar-width: none;
     }
 
     .information h1{

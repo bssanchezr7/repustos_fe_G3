@@ -3,6 +3,7 @@
   <div class="header">
     
     <nav >
+      <br>
       <h1>Tienda de repuestos</h1>
       <ul style="list-style-type:none;">
         <li><button v-if="is_auth" v-on:click="loadHome" > Inicio </button></li>
@@ -114,15 +115,7 @@ export default {
 </script>
 
 <style>
-:root {
-	--background-color: #ffe5e5;
-	--color: #000000;
-	--feedback-bg-color: #ffffff;
-	--feedback-secondary-color: #ffacac;
-	--feedback-primary-color: #53488d;
-	--feedback-icon-color: #ffffff;
-	--feedback-form-input: #f4f4f4;
-}
+
  body{
     margin: 0 0 0 0;
   }
@@ -140,7 +133,7 @@ export default {
     align-items: center; */
     position: fixed;
     right: 0;
-    width: 25%;
+    width: 30%;
     height: 100%;
     background-color: #F1F6F9;
     overflow-y: auto;
@@ -176,9 +169,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    
-    
+    font-size: 20px;    
   }
 
   .header nav{
@@ -188,13 +179,21 @@ export default {
 
   .header nav button{
     color: #E5E7E9;
-    background: #14274E;
-    border: 1px solid #E5E7E9;
-    /* border-radius: 5px; */
+    background: #357376;
+    border: 1px solid #E5E7E9; 
+    width: 100%;
+    padding: 10px ;
+    text-align: center;
+    /* border-radius: 5px;
     padding: 10px 50%;
     /* display: block */
     justify-content: center;
-    
+    /* background: rgba( 20, 39, 78, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ); */
   }
 
   .header nav button:hover{
@@ -212,7 +211,7 @@ export default {
     justify-content: left;  */
 
     overflow: visible ;
-    width: calc(75% + 1px);
+    width: calc(70% + 1px);
   }
 
   /* .footer{

@@ -1,5 +1,5 @@
 <template>
-
+    <div class="separador"></div>
     <div class="signUp_user">
         <div class="container_signUp_user">
             <h2>Registrarse</h2>
@@ -76,7 +76,9 @@ export default {
 
 
 <style>
-
+    .separador{
+        height:30vh;
+    }
     .signUp_user{
         margin: 0;
         padding: 0%;
@@ -102,6 +104,13 @@ export default {
 
     .signUp_user h2{
         color: #283747;
+        width: 80%;
+        font-size: 25px;
+        color: #283747;
+        align-items: center;
+        
+        
+        text-align: center;
 
     }
 
@@ -126,7 +135,7 @@ export default {
         height: 40px;
 
         color: #E5E7E9;
-        background: #283747;
+        background: #357376;
         border: 1px solid #E5E7E9;
 
         border-radius: 5px;

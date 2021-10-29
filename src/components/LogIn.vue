@@ -1,5 +1,5 @@
 <template>
-
+    <div class="separador"></div>
     <div class="logIn_user">
         <div class="container_logIn_user">
             <h2>Iniciar sesión como vendedor</h2>
@@ -68,7 +68,9 @@ export default {
 
 
 <style>
-
+    .separador{
+        height:30vh;
+    }
     .logIn_user{
         margin: 0;
         padding: 0%;
@@ -94,12 +96,17 @@ export default {
 
     .logIn_user h2{
         color: #283747;
-        width: 60%;
+        width: 80%;
+        font-size: 25px;
+        color: #283747;
+        align-items: center;
         
-               
+        
+        text-align: center;
         
 
     }
+
 
     .logIn_user form{
         width: 70%;
@@ -122,7 +129,7 @@ export default {
         height: 40px;
 
         color: #E5E7E9;
-        background: #283747;
+        background: #357376;
         border: 1px solid #E5E7E9;
 
         border-radius: 5px;

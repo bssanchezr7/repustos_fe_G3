@@ -1,8 +1,10 @@
 <template>
-
+    <div class="separador"></div>
     <div class="information">
+        <br>
+        
         <h1>Agregar productos</h1>
-
+        <br>
         <form class="form" v-on:submit.prevent="processAddProduct">
                 <input type="text" v-model="producto.nombre" placeholder="Descripción">
                 <br>
@@ -110,17 +112,22 @@ export default {
         table-layout: fixed;
         border-collapse: collapse;
   
-        overflow:scroll;
+        
         height:100%;
-        width:100%;
+       
 
         
         justify-content: center;
         align-items: center;
-       
+        scrollbar-width: none;
+        
     }
 
+    .separador{
+        height:30vh;
+    }
     .information h1{
+        align-items: center;
         font-size: 60px;
         color: #0f1316;
         text-align: center;
@@ -128,10 +135,16 @@ export default {
 
     .information button{
     color: #E5E7E9;
-    background: #283747;
+    background: #357376;
     border: 1px solid #E5E7E9;
 
     border-radius: 5px;
     padding: 10px 20px;
+  }
+
+    .information button:hover{
+    color: #283747;
+    background: #9BA4B4;
+    border: 1px solid #E5E7E9;
   }
 </style>

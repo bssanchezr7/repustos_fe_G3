@@ -1,12 +1,14 @@
 <template>
 
     <div class="information">
+        <br>
         <h1>Buscar producto</h1>
-
+        <br>
         <form class="form" v-on:submit.prevent="processSearchProduct">
                 <input type="text" v-model="buscar" placeholder="Buscar...">
                 <br>
                 <button type="submit"> Buscar Producto </button>
+                <br>
         </form>
         
         <table v-show="datos.length>0" class="table" border="4">
@@ -117,9 +119,7 @@ export default {
         width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
-        overflow:scroll;
-        height:100%;
-        width:100%;
+        
         justify-content: center;
         align-items: center;
     }
@@ -132,11 +132,17 @@ export default {
 
     .information button{
     color: #E5E7E9;
-    background: #283747;
+    background: #357376;
     border: 1px solid #E5E7E9;
     border-radius: 5px;
     padding: 10px 20px;
     }
+
+    .information button:hover{
+    color: #283747;
+    background: #9BA4B4;
+    border: 1px solid #E5E7E9;
+  }
 
     .table{
         width: 60%;

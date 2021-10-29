@@ -1,5 +1,5 @@
 <template>
-
+    <div class="separador"></div>
     <div class="greetings">
         <h1>¡Bienvenido  <span> {{username}} </span>!</h1>
     </div>
@@ -23,6 +23,11 @@ export default {
 
 
 <style>
+
+    .separador{
+        height:30vh;
+    }
+
     .greetings{
         margin: 0;
         padding: 0%;
@@ -40,7 +45,7 @@ export default {
     }
 
     .greetings span{
-        color: crimson;
+        color: #357376;
         font-weight: bold;
     }
 </style>

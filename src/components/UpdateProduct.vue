@@ -1,8 +1,9 @@
 <template>
-
+    <div class="separador"></div>
     <div class="information">
+        <br>
         <h1>Actualizar productos</h1>
-
+        <br>
         <form class="form" v-on:submit.prevent="processUpdateProduct">
                 <input type="number" v-model="producto.id" placeholder="Id">
                 <br>
@@ -111,13 +112,15 @@ export default {
         text-align: center;
     }
 
+    .separador{
+        height:30vh;
+    }
+
     .information{
         width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
-        overflow:scroll;
-        height:100%;
-        width:100%;
+       
         justify-content: center;
         align-items: center;
     }
@@ -130,9 +133,15 @@ export default {
 
     .information button{
     color: #E5E7E9;
-    background: #283747;
+    background: #357376;
     border: 1px solid #E5E7E9;
     border-radius: 5px;
     padding: 10px 20px;
+  }
+
+  .information button:hover{
+    color: #283747;
+    background: #9BA4B4;
+    border: 1px solid #E5E7E9;
   }
 </style>
